@@ -1,0 +1,14 @@
+.errorWrapper {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+  background-color: #fdd;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e00;
+}
+
+.errorMessage {
+  font-size: 24px;
+  font-weight: bold;
+}

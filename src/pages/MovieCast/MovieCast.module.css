@@ -1,0 +1,15 @@
+.cast {
+  margin: 16px 0;
+  font-size: 18px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  margin-bottom: 8px;
+  color: #343a40;
+}

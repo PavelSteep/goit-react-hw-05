@@ -1,0 +1,21 @@
+.page {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.title {
+  font-size: 36px;
+  color: #dc3545;
+}
+
+.link {
+  margin-top: 16px;
+  display: inline-block;
+  text-decoration: none;
+  color: #007bff;
+  font-size: 18px;
+}
+
+.link:hover {
+  color: #0056b3;
+}

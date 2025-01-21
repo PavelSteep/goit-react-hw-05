@@ -1,0 +1,20 @@
+.reviews {
+  margin: 16px 0;
+  font-size: 18px;
+}
+
+.review {
+  margin-bottom: 16px;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 8px;
+}
+
+.author {
+  font-weight: bold;
+  color: #495057;
+}
+
+.content {
+  margin-top: 8px;
+  color: #343a40;
+}
