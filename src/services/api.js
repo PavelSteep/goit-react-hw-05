@@ -1,23 +1,24 @@
-import React from 'react';
 import axios from 'axios';
-import css from './api.module.css';
-
 const API_KEY = 'a92a90cf1d40bbb51d3728ffff214a17';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-export const fetchMovies = async query => {
-  const response = await axios.get(`${BASE_URL}/search/movie`, {
-    params: {
-      api_key: API_KEY,
-      query,
-    },
-  });
-  return response.data;
+// Функция для обработки API-запросов
+export const fetchData = async (url, params) => {
+  try {
+    const response = await axios.get(url, { params: { api_key: API_KEY, ...params } });
+    return response.data;
+  } catch (error) {
+    console.error("API request failed:", error.message);
+    throw error;
+  }
 };
 
+// Функция для поиска фильмов по запросу
+export const fetchMovies = async (query) => {
+  return await fetchData(`${BASE_URL}/search/movie`, { query });
+};
+
+// Функция для получения данных фильма по ID
 export const getMovieById = async (id) => {
-  const response = await axios.get(`${BASE_URL}/movie/${id}`, {
-    params: { api_key: API_KEY },
-  });
-  return response.data;
+  return await fetchData(`${BASE_URL}/movie/${id}`, {});
 };

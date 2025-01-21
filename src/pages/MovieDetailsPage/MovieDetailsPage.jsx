@@ -6,9 +6,10 @@ import css from './MovieDetailsPage.module.css';
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
+  const [error, setError] = useState(null);
 
   const location = useLocation();
-  const backLinkURL = location.state?.from || '/movies';
+  const backLinkURLRef = useRef(location.state?.from || '/movies');
 
   useEffect(() => {
     async function fetchMovieDetails() {
@@ -16,11 +17,16 @@ const MovieDetailsPage = () => {
         const data = await getMovieById(movieId);
         setMovieDetails(data);
       } catch (error) {
+        setError("Sorry, we couldn't fetch the movie details. Please try again later.");
         console.error(error);
       }
     }
     fetchMovieDetails();
   }, [movieId]);
+
+  if (error) {
+    return <div className={css.errorMessage}>{error}</div>;
+  }
 
   if (!movieDetails) {
     return <div>Loading movie details...</div>;
@@ -30,7 +36,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div className={css.detailsContainer}>
-      <Link to={backLinkURL} className={css.backButton}>
+      <Link to={backLinkURLRef.current} className={css.backButton}>
         ← Go back
       </Link>
       <h1>{title}</h1>
