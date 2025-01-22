@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { fetchMovies } from '../../services/api.js';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import MovieList from '../../components/MovieList/MovieList';
 import css from './MoviesPage.module.css';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || ''; // Получаем параметр query из URL
-  const location = useLocation();
 
   useEffect(() => {
     if (!query) return;
@@ -38,18 +38,7 @@ const MoviesPage = () => {
         placeholder="Enter movie name"
       />
       {movies.length > 0 ? (
-        <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>
-              <Link
-                to={`/movies/${movie.id}`}
-                state={{ from: location }}
-              >
-                {movie.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <MovieList movies={movies} />
       ) : (
         <p>No movies found. Please try again.</p>
       )}

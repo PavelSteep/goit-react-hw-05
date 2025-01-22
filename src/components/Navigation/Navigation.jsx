@@ -16,10 +16,6 @@ const Navigation = () => {
       <NavLink to="/movies" className={buildLinkClass}>
         Movies
       </NavLink>
-      {/* Добавляем ссылку на страницу логина */}
-      <NavLink to="/login" className={buildLinkClass}>
-        Login
-      </NavLink>
     </nav>
   );
 };
